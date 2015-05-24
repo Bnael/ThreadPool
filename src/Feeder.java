@@ -12,13 +12,13 @@ public class Feeder extends Thread {
 	}
 	
 	
-	//ΧΧ§Χ‘Χ ΧΧΆΧ¨Χ Χ©Χ Χ Χ•Χ“Χ™Χ Χ‘Χ›Χ Χ Χ•Χ“ Χ™Χ© ΧªΧ•Χ¦ΧΧ” Χ•ΧΧ©Χ™ΧΧ”
+	//ξχαμ ξςψκ ωμ πεγιν αλμ πεγ ιω ϊεφΰδ εξωιξδ
 	public void setArray(ArrayList<Node> arr){
 		this.arr = arr;
 		//System.out.println("feeder : new Array set size:"+arr.size() + arr.toString());
 	}
 
-	//ΧΧ›Χ Χ™Χ΅ ΧΧª Χ”ΧΧ©Χ™ΧΧ•Χª Χ©Χ‘ΧΧΆΧ¨Χ ΧΧªΧ•Χ Χ”Χ¤Χ•Χ ΧΧ Χ’'Χ¨
+	//ξλπιρ ΰϊ δξωιξεϊ ωαξςψκ μϊεκ δτεμ ξπβ'ψ
 	public void run() {
 
 		int index = 0;
@@ -31,7 +31,7 @@ public class Feeder extends Thread {
 				index++;
 			}
 			
-			//ΧΧ¦Χ•Χ¨Χ Χ‘Χ“Χ™Χ§Χ•Χª ... ΧΧ¤Χ©Χ¨ ΧΧΧ—Χ•Χ§ Χ‘Χ΅Χ•Χ£
+			//μφεψκ αγιχεϊ ... ΰτωψ μξηεχ αρεσ
 			// System.out.println("feeder ensd");
 
 			/*try {

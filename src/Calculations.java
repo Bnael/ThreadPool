@@ -22,13 +22,13 @@ public class Calculations {
 
 	}
 */
-	double calc;//Χ΅Χ•Χ’ Χ”Χ—Χ™Χ©Χ•Χ‘
+	double calc;//ρεβ δηιωεα
 
 	public Calculations(double calc) {
 		this.calc = calc;
 
 	}
-	//ΧΧ§Χ‘Χ ΧªΧ•Χ¦ΧΧ” Χ•ΧΧª ΧΧ” Χ©Χ¦Χ¨Χ™Χ ΧΧ”Χ›Χ¤Χ™Χ ΧΧ• ΧΧ—Χ‘Χ¨ ΧΧΧ™Χ” ΧªΧΧ•Χ™ Χ‘Χ΅Χ•Χ’ Χ”ΧΧ©Χ•Χ•ΧΧ”
+	//ξχαμ ϊεφΰδ εΰϊ ξδ ωφψικ μδλτιμ ΰε μηαψ ΰμιδ ϊμει αρεβ δξωεεΰδ
 	public double calc(double ans, double num) {
 
 		switch (calc + "") {
@@ -49,7 +49,7 @@ public class Calculations {
 		return ans;
 	}
 
-	//Χ‘ΧΧ™Χ“Χ” Χ•Χ–ΧΧª Χ”Χ¤ΧΆΧ Χ”Χ¨ΧΧ©Χ•Χ Χ” Χ©Χ‘Χ•Χ Χ™Χ ΧΧª ΧΧΆΧ¨Χ Χ”ΧΧ©Χ™ΧΧ•Χª ΧΧ– Χ”Χ•Χ ΧΧ¦Χ™Χ‘ ΧΧª Χ”ΧΧ΅Χ¤Χ¨ Χ‘Χ Χ•Χ΅Χ—Χ”
+	//αξιγδ εζΰϊ δτςν δψΰωεπδ ωαεπιν ΰϊ ξςψκ δξωιξεϊ ΰζ δεΰ ξφια ΰϊ δξρτψ απερηδ
 	public double calc(double num) {
 
 		double ans = 0;

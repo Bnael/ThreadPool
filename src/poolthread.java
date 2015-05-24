@@ -8,22 +8,22 @@ public class poolthread extends Thread {
 	}
 
 	public void run() {
-		//Χ›ΧΧ©Χ¨ ΧΧ΅ΧªΧ™Χ™ΧΧ•Χª Χ›Χ Χ”Χ¤ΧΆΧ•ΧΧ•Χª Χ¦Χ¨Χ™Χ ΧΧ©Χ Χ•Χª ΧΧª Χ”ΧΧ•ΧΧΧ” Χ”Χ–ΧΧª ΧΧ©Χ§Χ¨ Χ•ΧΧ– Χ”ΧΧ¨Χ“ Χ™Χ™Χ›Χ‘Χ” ΧΧ•ΧΧ•ΧΧΧ™Χª
+		//λΰωψ ξρϊιιξεϊ λμ δτςεμεϊ φψικ μωπεϊ ΰϊ δμεμΰδ δζΰϊ μωχψ εΰζ δθψγ ιιλαδ ΰεθεξθιϊ
 		while (pm.flag) {
 			
 			
-				Node node = pm.getTask();//ΧΧ•Χ§Χ— ΧΧ©Χ™ΧΧ”
-				if (node != null) {//ΧΧ Χ‘ΧΧΧª Χ§Χ™Χ™ΧΧª ΧΧ©Χ™ΧΧ” ΧΧ‘Χ¦ΧΆ ΧΧ•ΧªΧ”
+				Node node = pm.getTask();//μεχη ξωιξδ
+				if (node != null) {//ΰν αΰξϊ χιιξϊ ξωιξδ ξαφς ΰεϊδ
 				
 					try {
-						node.setRes(node.task.call());//ΧΧ›Χ Χ™Χ΅ ΧΧª Χ”ΧªΧ•Χ¦ΧΧ” ΧΧ¨Χ™Χ–Χ•ΧΧ
+						node.setRes(node.task.call());//ξλπιρ ΰϊ δϊεφΰδ μψιζεμθ
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
 					/*
-					//ΧΧ¤Χ©Χ¨ ΧΧΧ—Χ•Χ§ Χ‘Χ΅Χ•Χ£
+					//ΰτωψ μξηεχ αρεσ
 				/*	//print data for Testing 
 				 */System.out.println("thred num" + super.getName()+ " print:" + node.res.res);
 					try {sleep((long) (Math.random() * 1000));} 

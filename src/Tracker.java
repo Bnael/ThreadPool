@@ -30,38 +30,38 @@ public class Tracker implements Callable<Result> {
 		BuildFirsfNodeList();
 
 	}
-//׳‘׳•׳ ׳” ׳�׳× ׳”׳�׳¢׳¨׳� ׳”׳¨׳�׳©׳•׳ ׳™... ׳�׳§׳‘׳� ׳�׳¡׳₪׳¨׳™׳� 
+//בונה את המערך הראשוני... מקבל מספרים 
 	/*
 	 * 1.2.3.4... 
-	 * ׳•׳‘׳•׳ ׳” ׳¨׳©׳™׳�׳” ׳©׳� TASK
+	 * ובונה רשימה של TASK
 	 * 
 	 */
 	private void BuildFirsfNodeList() {
 		
-		ArrayList<Node> Narr = new ArrayList<Node>();//׳�׳’׳“׳™׳¨ ׳¨׳©׳™׳�׳” ׳—׳“׳©׳”
+		ArrayList<Node> Narr = new ArrayList<Node>();//מגדיר רשימה חדשה
 
-		int from = 1;//I=1 ׳¢׳“ TO
+		int from = 1;//I=1 עד TO
 
 		while (from <= To) {
-			Task t = new Task(calc,true);//׳™׳•׳¦׳¨ ׳�׳©׳™׳�׳” ׳—׳“׳©׳”
-	//TRUE - ׳�׳•׳�׳¨ ׳©׳¢׳�׳™׳• ׳�׳—׳©׳‘ ׳�׳× ׳”׳‘׳™׳˜׳•׳™ ׳”׳¨׳�׳©׳•׳ ׳™
-			while (from % m != 0 && from <= To) {//׳™׳•׳¦׳¨ ׳�׳©׳™׳�׳•׳× ׳‘׳’׳•׳“׳� M
-				t.addNum(from);//׳�׳›׳ ׳™׳¡׳” ׳�׳¡׳₪׳¨׳™׳� ׳�׳˜׳•׳¨ ׳©׳‘׳�׳©׳™׳�׳” גכעא
+			Task t = new Task(calc,true);//יוצר משימה חדשה
+	//TRUE - אומר שעליו לחשב את הביטוי הראשוני
+			while (from % m != 0 && from <= To) {//יוצר משימות בגודל M
+				t.addNum(from);//מכניסה מספרים לטור שבמשימה
 				from++;
 			}
 			if(from <= To){
 			t.addNum(from);
 			from++;
 			}
-			Narr.add(new Node(t, new Result()));//׳�׳•׳¡׳™׳£ ׳ ׳•׳“ ׳�׳¨׳©׳™׳�׳”
+			Narr.add(new Node(t, new Result()));//מוסיף נוד לרשימה
 
 		}
-		this.arr.add(Narr);//׳�׳•׳¡׳™׳£ ׳�׳× ׳”׳¨׳©׳™׳�׳” ׳”׳¨׳�׳©׳•׳ ׳” ׳�׳¨׳©׳™׳�׳” ׳”׳¨׳�׳©׳™׳×
+		this.arr.add(Narr);//מוסיף את הרשימה הראשונה לרשימה הראשית
 	
 	}
 
 
-//׳₪׳•׳ ׳§׳¦׳™׳™׳” ׳©׳�׳₪׳¢׳™׳�׳” ׳�׳× ׳”׳§׳•׳�׳�׳‘׳�
+//פונקצייה שמפעילה את הקולאבל
 	public Result start() {
 		try {
 			
@@ -80,26 +80,26 @@ public class Tracker implements Callable<Result> {
 	@Override
 	public Result call() throws Exception {
 
-		while (!calcFinished) {//׳�׳�׳©׳™׳� ׳›׳� ׳¢׳•׳“ ׳�׳� ׳”׳’׳¢׳ ׳• ׳�׳×׳•׳¦׳�׳” ׳™׳—׳™׳“׳” 
+		while (!calcFinished) {//ממשיך כל עוד לא הגענו לתוצאה יחידה 
 			this.feeder = new Feeder(this.pm, this.t);
 
 			// System.out.println(feeder.getState());
-			ArrayList<Node> a = this.arr.get(this.arr.size() - 1);//׳�׳•׳§׳— ׳�׳× ׳”׳�׳¢׳¨׳� ׳”׳�׳—׳¨׳•׳� 
-			feeder.setArray(a);//׳�׳›׳ ׳™׳¡ ׳�׳₪׳™׳“׳¨
+			ArrayList<Node> a = this.arr.get(this.arr.size() - 1);//לוקח את המערך האחרון 
+			feeder.setArray(a);//מכניס לפידר
 			feeder.start();
 
-			while (!isDone) {//׳›׳� ׳¢׳•׳“ ׳�׳� ׳”׳¡׳×׳™׳™׳� ׳”׳—׳™׳©׳•׳‘
+			while (!isDone) {//כל עוד לא הסתיים החישוב
 				int counter = 0;
 				for (int i = 0; i < a.size(); i++) {
 					if (a.get(i).finish) {
 						counter++;
 					}
 				}
-				if (counter == a.size())//׳‘׳•׳“׳§ ׳�׳� ׳›׳•׳�׳� ׳¡׳™׳™׳�׳• ׳�׳—׳©׳‘
+				if (counter == a.size())//בודק אם כולם סיימו לחשב
 					isDone = true;
 			}
 
-			this.arr.add(CreateNodeListFromResult(a));//׳�׳›׳™׳� ׳�׳¢׳¨׳� ׳—׳“׳© ׳©׳� ׳�׳©׳™׳�׳•׳× ׳¢׳� ׳¡׳�׳� ׳”׳×׳•׳¦׳�׳•׳× ׳”׳�׳—׳¨׳•׳ ׳•׳×
+			this.arr.add(CreateNodeListFromResult(a));//מכין מערך חדש של משימות על סמך התוצאות האחרונות
 			isDone = false;
 		}
 
@@ -107,8 +107,8 @@ public class Tracker implements Callable<Result> {
 	}
 /**
  * 
- * @param a ׳�׳§׳‘׳�׳× ׳�׳¢׳¨׳� ׳©׳� ׳ ׳•׳“׳™׳� ׳•׳¢׳� ׳¡׳�׳� ׳”׳×׳•׳¦׳�׳•׳× ׳©׳‘׳ ׳•׳“׳™׳� 
- * @return ׳”׳™׳� ׳�׳›׳™׳ ׳” ׳�׳¢׳¨׳� ׳—׳“׳© ׳©׳� ׳˜׳¡׳§׳™׳�, ׳�׳©׳™׳�׳•׳×
+ * @param a מקבלת מערך של נודים ועל סמך התוצאות שבנודים 
+ * @return היא מכינה מערך חדש של טסקים, משימות
  */
 	private ArrayList<Node> CreateNodeListFromResult(ArrayList<Node> a) {
 

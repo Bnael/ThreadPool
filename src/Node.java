@@ -3,7 +3,7 @@ public class Node {
 	Task task;
 	Result res;
 	
-	boolean finish;// ΧΧ Χ”Χ•Χ–Χ Χ” ΧªΧ•Χ¦ΧΧ” 
+	boolean finish;// ΰν δεζπδ ϊεφΰδ 
 	
 	
 	public Node(Task task, Result res) {
@@ -21,7 +21,7 @@ public class Node {
 	}
 
 	
-	//Χ›Χ©ΧΧªΧ§Χ‘ΧΧª ΧªΧ•Χ¦ΧΧ” Χ”Χ•Χ¤Χ ΧΧª Χ”Χ“Χ’Χ ΧΧΧΧª
+	//λωξϊχαμϊ ϊεφΰδ δετκ ΰϊ δγβμ μΰξϊ
 	public void setRes(double r) {
 		this.res.setRes(r);
 		this.finish = true;
