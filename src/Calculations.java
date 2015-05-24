@@ -1,3 +1,5 @@
+//make it callable or marge to Task!
+
 public class Calculations {
 /* test!!
 	public static void main(String[] args) {
@@ -29,6 +31,7 @@ public class Calculations {
 
 	}
 	//מקבל תוצאה ואת מה שצריך להכפיל או לחבר אליה תלוי בסוג המשוואה
+	//change to call 
 	public double calc(double ans, double num) {
 
 		switch (calc + "") {
@@ -50,6 +53,7 @@ public class Calculations {
 	}
 
 	//במידה וזאת הפעם הראשונה שבונים את מערך המשימות אז הוא מציב את המספר בנוסחה
+	//make this  a function at the Tracker
 	public double calc(double num) {
 
 		double ans = 0;

@@ -6,9 +6,9 @@ public class Task implements Callable<Double> {
 	boolean firstCalc;
 	Queue<Double> numq;
 
-	public Task(double calc, boolean firstCalc) {
+	public Task(double calcType, boolean firstCalc) {
 		this.firstCalc = firstCalc;
-		this.calc = new Calculations(calc);
+		this.calc = new Calculations(calcType);
 		numq = new Queue<Double>();
 	}
 

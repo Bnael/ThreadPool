@@ -24,11 +24,10 @@ public class poolthread extends Thread {
 					
 					/*
 					//אפשר למחוק בסוף
-				/*	//print data for Testing 
+					//print data for Testing 
 				 */System.out.println("thred num" + super.getName()+ " print:" + node.res.res);
 					try {sleep((long) (Math.random() * 1000));} 
 					catch (InterruptedException e) {e.printStackTrace();}
-					/**/
 				} 
 				
 				//else { System.out.println("empty");}

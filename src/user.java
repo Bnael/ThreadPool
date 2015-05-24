@@ -1,8 +1,5 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Future;
-import java.util.concurrent.Semaphore;
+
 
 public class user {
 
@@ -20,11 +17,12 @@ public class user {
 		nk.add(5);
 		
 		nk.add(20);
-		nk.add(50);
+		nk.add(10);
 
 		lr.add(15);
 		//צריך לבדוק למה לא עובד במצב זבו מחשבים את 1.2 כאשר 
 		//N=20
+		//no more memory!
 		lr.add(20);
 		lr.add(30);
 
@@ -56,12 +54,40 @@ public class user {
 			track12[i] = new Tracker(lr.get(i), pm, t, m, 1.2);
 			track12[i].start();
 		}
-
-		for (int i = 0; i < r; i++) {
-			track13[i] = new Tracker(nk.get(i), pm, t, s, 1.3);
-			track13[i].start();
+//
+//		for (int i = 0; i < r; i++) {
+//			track13[i] = new Tracker(mr.get(i), pm, t, s, 1.3);
+//			track13[i].start();
+//		}
+		
+		
+		//wait till everything is complete
+		boolean allDone = false;
+		while(allDone){
+			boolean secFlag = true;
+			for (int i = 0; i < track11.length && secFlag; i++) {
+				if(!track11[i].isDone){
+					secFlag = false;
+				}
+			}
+			for (int i = 0; i < track12.length && secFlag; i++) {
+				if(!track12[i].isDone){
+					secFlag = false;
+				}
+			}
+			for (int i = 0; i < track13.length && secFlag; i++) {
+				if(!track13[i].isDone){
+					secFlag = false;
+				}
+			}
+			if(secFlag){
+				allDone = true;
+			}
 		}
-
+		pm.flag= false;
+		System.out.println("all done! now kill PM and print results");
+		
+		//if all done print everything
 		for (int i = 0; i < track11.length; i++) {
 			System.out.println("Expr. type (1.1),  n =" + nk.get(i) + " == "
 					+ track11[i].finalAns.res);

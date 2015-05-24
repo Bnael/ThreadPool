@@ -15,6 +15,7 @@ public class poolmaneger {
 	}
 
 	// אני לא חושב שיש שימוש בפונקצייה הזאת
+	//no use - can delete
 	public synchronized boolean isQEmpty() {
 		return q.isEmpty();
 	}

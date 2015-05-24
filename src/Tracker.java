@@ -44,7 +44,7 @@ public class Tracker implements Callable<Result> {
 
 		while (from <= To) {
 			Task t = new Task(calc,true);//יוצר משימה חדשה
-	//TRUE - אומר שעליו לחשב את הביטוי הראשוני
+			//TRUE - אומר שעליו לחשב את הביטוי הראשוני
 			while (from % m != 0 && from <= To) {//יוצר משימות בגודל M
 				t.addNum(from);//מכניסה מספרים לטור שבמשימה
 				from++;
@@ -54,7 +54,6 @@ public class Tracker implements Callable<Result> {
 			from++;
 			}
 			Narr.add(new Node(t, new Result()));//מוסיף נוד לרשימה
-
 		}
 		this.arr.add(Narr);//מוסיף את הרשימה הראשונה לרשימה הראשית
 	
@@ -66,7 +65,7 @@ public class Tracker implements Callable<Result> {
 		try {
 			
 			Result a = this.call();
-			System.out.println("Tracker" + To + " > finel Res" + a.toString());
+			System.out.println("Tracker" + To + " > final Res" + a.toString());
 			System.out.println("up!@#");
 			
 			return a;
@@ -74,6 +73,7 @@ public class Tracker implements Callable<Result> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("Tracker.result did nothing!!");
 		return null;
 	}
 
@@ -106,7 +106,6 @@ public class Tracker implements Callable<Result> {
 		return finalAns;
 	}
 /**
- * 
  * @param a מקבלת מערך של נודים ועל סמך התוצאות שבנודים 
  * @return היא מכינה מערך חדש של טסקים, משימות
  */
