@@ -46,16 +46,13 @@ public class Calculations {
 		case "1.3":
 			ans = (ans + num);
 			break;
-
 		}
-
 		return ans;
 	}
 
 	//במידה וזאת הפעם הראשונה שבונים את מערך המשימות אז הוא מציב את המספר בנוסחה
 	//make this  a function at the Tracker
 	public double calc(double num) {
-
 		double ans = 0;
 
 		switch (calc + "") {
@@ -68,9 +65,7 @@ public class Calculations {
 		case "1.3":
 			ans = ((num) / (2 * Math.pow(num, 2) + 1));
 			break;
-
 		}
-
 		return ans;
 	}
 

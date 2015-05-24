@@ -1,9 +1,8 @@
 public class poolmaneger {
 	poolthread[] pt;// הטרדים הפועלים בגודל T
 	Queue<Node> q;// המשימות שנכנסות מהפידר
-	boolean flag = true;// מדליק את הטרדים ומכבה אותם ... צריך להפוך לשקר
-						// כשמסתיימת כל העבודה
-
+	boolean flag = true; // when all the work is finished it's turn to false and all the threads kill themselves
+	
 	public poolmaneger(int numOfWorkers) {
 		pt = new poolthread[numOfWorkers];
 		q = new Queue<Node>();
@@ -14,12 +13,14 @@ public class poolmaneger {
 		}
 	}
 
+	/*
 	// אני לא חושב שיש שימוש בפונקצייה הזאת
 	//no use - can delete
 	public synchronized boolean isQEmpty() {
 		return q.isEmpty();
 	}
-
+	 */
+	
 	// בשביל הטרדים, מכאן הם מושים משימות שנמצאות בתור צריך לשנות את זה לסמפור..
 	// שלא יקחו את אותה המשימה בוז
 	public synchronized Node getTask() {
