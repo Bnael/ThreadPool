@@ -24,17 +24,17 @@ public class Calculations {
 
 	}
 */
-	double calc;//סוג החישוב
+	double calcType;//סוג החישוב
 
-	public Calculations(double calc) {
-		this.calc = calc;
+	public Calculations(double calcType) {
+		this.calcType = calcType;
 
 	}
 	//מקבל תוצאה ואת מה שצריך להכפיל או לחבר אליה תלוי בסוג המשוואה
-	//change to call 
+	//change to call - moved to Task.call
 	public double calc(double ans, double num) {
 
-		switch (calc + "") {
+		switch (calcType + "") {
 		case "1.1":
 			if(ans == 0)ans =1;
 			ans = (ans * num);
@@ -51,11 +51,11 @@ public class Calculations {
 	}
 
 	//במידה וזאת הפעם הראשונה שבונים את מערך המשימות אז הוא מציב את המספר בנוסחה
-	//make this  a function at the Tracker
+	//moved to a function at the Tracker
 	public double calc(double num) {
-		double ans = 0;
+		double ans = 1;
 
-		switch (calc + "") {
+		switch (calcType + "") {
 		case "1.1":
 			ans = (Math.pow(-1, num) / (2 * num + 1));
 			break;

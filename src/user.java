@@ -108,7 +108,18 @@ public class user {
 		 * כאשר מסתיימים כל החישובים צריך לעצור את הטרדים שעדיין עובדים
 		 * done
 		 */
-
+		
+		System.out.println("~~~~~~ Test ~~~~~~");
+		double tmp = 0;
+		for (int i = 1; i <= 13; i++) {
+			tmp = tmp + ((i) / (2 * Math.pow(i, 2) + 1));
+		}
+		System.out.println("1.3 for 13: "+ tmp);
+		double tmp2 = 1;
+		for (int i = 1; i <= 20; i++) {
+			tmp2 = tmp2 * (Math.pow(-1, 3 * i) / (2 * (i + 1) + 1));
+		}
+		System.out.println("1.2 for 20: "+ tmp2);
 	}
 	
 	public static double round(double value) {
