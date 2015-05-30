@@ -57,7 +57,7 @@ public class Task implements Callable<Double> {
 				ans = (ans * num);
 				break;
 			case SUMMARIZE:
-				ans = (ans + num);
+				ans = ans + num;
 				break;
 //			case "1.2":
 //			if(ans == 0)ans =1;

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
-import java.util.concurrent.Semaphore;
+//import java.util.concurrent.Semaphore;
 
 public class Tracker implements Callable<Result> {
 
@@ -9,7 +9,7 @@ public class Tracker implements Callable<Result> {
 
 	Feeder feeder;
 	ArrayList<ArrayList<Node>> arr;
-	boolean isDone, calcFinished;
+	boolean isDone, calcFinished,final12;
 	Result finalAns;
 	int m,t;
 	double calcType;
@@ -18,6 +18,7 @@ public class Tracker implements Callable<Result> {
 
 
 
+	//
 	public Tracker(int tonum, poolmaneger pm, int t, int MaxSizeOfTask, double calcType) {
 		this.To = tonum;
 		this.isDone = false;
@@ -29,7 +30,52 @@ public class Tracker implements Callable<Result> {
 		this.calcFinished = false;
 		BuildFirsfNodeList();//initialize
 	}
-	
+
+
+	//delete this
+	//sum 1.2 and 1.3 ?
+//	public Tracker(poolmaneger pm , int t,int MaxSizeOfTask,ArrayList<Node> arr) {
+//		this.arr = new ArrayList<ArrayList<Node>>();
+//		this.arr.add(arr);
+//		calcType = SUMMARIZE;
+//		this.To = arr.size();
+//		this.isDone = false;
+//		this.pm = pm;
+//		//		this.calcType = calcType;
+//		this.t = t;
+//		this.m = MaxSizeOfTask;
+//		//		this.arr = new ArrayList<ArrayList<Node>>();
+//		this.calcFinished = false;
+//	}
+
+	public Tracker(poolmaneger pm, int t, int MaxSizeOfTask, Tracker[] track12,
+			Tracker[] track13) {
+		final12=true;
+		this.arr = new ArrayList<ArrayList<Node>>();
+		calcType = SUMMARIZE;
+		this.To = track12.length;
+		this.isDone = false;
+		this.pm = pm;
+		this.t = t;
+		this.m = MaxSizeOfTask;
+		//		this.arr = new ArrayList<ArrayList<Node>>();
+		this.calcFinished = false;
+		ArrayList<Node> Narr = new ArrayList<Node>();//מגדיר רשימה חדשה
+		for (int i = 0; i < To; i++) {
+			Task tmpTask = new Task(SUMMARIZE);
+			tmpTask.addNum(track12[i].finalAns.res);
+
+			System.out.println("1.3 res: "+ track13[i].finalAns.res);
+			tmpTask.addNum(track13[i].finalAns.res);
+//			tmpTask.addNum(track13[i].finalAns.res);
+			System.out.println("1.2 res: "+ track12[i].finalAns.res);
+//			tmpTask.addNum(1);
+//			tmpTask.addNum(track12[i].finalAns.res);
+			Narr.add(new Node(tmpTask, new Result()));
+		}
+		arr.add(Narr);
+	}
+
 	//בונה את המערך הראשוני... מקבל מספרים 
 	/*
 	 * 1.2.3.4... 
@@ -61,7 +107,7 @@ public class Tracker implements Callable<Result> {
 
 	}
 
-	
+
 	//פונקצייה שמפעילה את הקולאבל
 	public Result start() {
 		try {
@@ -81,10 +127,33 @@ public class Tracker implements Callable<Result> {
 	@Override
 	public Result call() throws Exception {
 
-		while (!calcFinished) {//ממשיך כל עוד לא הגענו לתוצאה יחידה 
+		if(!final12){
+			while (!calcFinished) {//ממשיך כל עוד לא הגענו לתוצאה יחידה 
+				this.feeder = new Feeder(this.pm, this.t);
+				// System.out.println(feeder.getState());
+				ArrayList<Node> a = this.arr.get(this.arr.size() - 1);//לוקח את המערך האחרון 
+				feeder.setArray(a);//מכניס לפידר
+				feeder.start();
+
+				while (!isDone) {//כל עוד לא הסתיים החישוב
+					int counter = 0;
+					for (int i = 0; i < a.size(); i++) {
+						if (a.get(i).finish) {
+							counter++;
+						}
+					}
+					if (counter == a.size())//בודק אם כולם סיימו לחשב
+						isDone = true;
+				}
+				this.arr.add(CreateNodeListFromResult(a));//מכין מערך חדש של משימות על סמך התוצאות האחרונות
+				isDone = false;
+			}
+
+			printFinalAns();
+		}
+		else{
 			this.feeder = new Feeder(this.pm, this.t);
-			// System.out.println(feeder.getState());
-			ArrayList<Node> a = this.arr.get(this.arr.size() - 1);//לוקח את המערך האחרון 
+			ArrayList<Node> a = this.arr.get(0);//לוקח את המערך האחרון 
 			feeder.setArray(a);//מכניס לפידר
 			feeder.start();
 
@@ -98,11 +167,33 @@ public class Tracker implements Callable<Result> {
 				if (counter == a.size())//בודק אם כולם סיימו לחשב
 					isDone = true;
 			}
-			this.arr.add(CreateNodeListFromResult(a));//מכין מערך חדש של משימות על סמך התוצאות האחרונות
-			isDone = false;
+			printFinalAns12(a);
 		}
+
 		return finalAns;//Result type
 	}
+	private void printFinalAns12(ArrayList<Node> a) {
+		for (int i = 0; i < To; i++) {
+			System.out.println("Expr. type (1.2),  l = m = " + To + " == "
+					+ (a.get(i).res.res));
+		}
+		
+	}
+
+
+	private void printFinalAns() {
+		if(calcType==1.1){
+			System.out.println("Expr. type (1.1),  n = " + To + " == "
+					+ (finalAns.res));
+		}
+//		else{
+//			if(calcType==1.2){
+//				System.out.println("Expr. type (1.2),  l = m = " + To + " == "
+//						+ (finalAns.res));
+//			}
+//		}
+	}
+
 	/**
 	 * @param a מקבלת מערך של נודים ועל סמך התוצאות שבנודים 
 	 * @return היא מכינה מערך חדש של טסקים, משימות
@@ -164,7 +255,7 @@ public class Tracker implements Callable<Result> {
 		}
 		return ans;
 	}
-	
+
 	/**
 	 * help function - convert Tracker.calcType to Task.calcType
 	 * @return TaskCalcType
