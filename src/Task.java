@@ -68,5 +68,9 @@ public class Task implements Callable<Double> {
 		return ans;
 	}
 	
+	private float round(double res) {
+		float f = new Float(res);
+		return f;
+	}
 
 }

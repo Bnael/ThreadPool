@@ -47,7 +47,7 @@ public class Tracker implements Callable<Result> {
 //		//		this.arr = new ArrayList<ArrayList<Node>>();
 //		this.calcFinished = false;
 //	}
-
+/*
 	public Tracker(poolmaneger pm, int t, int MaxSizeOfTask, Tracker[] track12,
 			Tracker[] track13) {
 		final12=true;
@@ -75,6 +75,7 @@ public class Tracker implements Callable<Result> {
 		}
 		arr.add(Narr);
 	}
+	*/
 
 	//בונה את המערך הראשוני... מקבל מספרים 
 	/*
@@ -112,7 +113,7 @@ public class Tracker implements Callable<Result> {
 	public Result start() {
 		try {
 			//Result a = this.call();
-			System.out.println("Tracker " + To +" working");
+//			System.out.println("Tracker " + To +" working");
 			//System.out.println("Tracker" + To + " > final Res" + a.toString());
 			//System.out.println("up!@#");
 			return this.call();
@@ -127,7 +128,7 @@ public class Tracker implements Callable<Result> {
 	@Override
 	public Result call() throws Exception {
 
-		if(!final12){
+//		if(!final12){
 			while (!calcFinished) {//ממשיך כל עוד לא הגענו לתוצאה יחידה 
 				this.feeder = new Feeder(this.pm, this.t);
 				// System.out.println(feeder.getState());
@@ -149,50 +150,50 @@ public class Tracker implements Callable<Result> {
 				isDone = false;
 			}
 
-			printFinalAns();
-		}
-		else{
-			this.feeder = new Feeder(this.pm, this.t);
-			ArrayList<Node> a = this.arr.get(0);//לוקח את המערך האחרון 
-			feeder.setArray(a);//מכניס לפידר
-			feeder.start();
-
-			while (!isDone) {//כל עוד לא הסתיים החישוב
-				int counter = 0;
-				for (int i = 0; i < a.size(); i++) {
-					if (a.get(i).finish) {
-						counter++;
-					}
-				}
-				if (counter == a.size())//בודק אם כולם סיימו לחשב
-					isDone = true;
-			}
-			printFinalAns12(a);
-		}
+//			printFinalAns();
+//		}
+//		else{
+//			this.feeder = new Feeder(this.pm, this.t);
+//			ArrayList<Node> a = this.arr.get(0);//לוקח את המערך האחרון 
+//			feeder.setArray(a);//מכניס לפידר
+//			feeder.start();
+//
+//			while (!isDone) {//כל עוד לא הסתיים החישוב
+//				int counter = 0;
+//				for (int i = 0; i < a.size(); i++) {
+//					if (a.get(i).finish) {
+//						counter++;
+//					}
+//				}
+//				if (counter == a.size())//בודק אם כולם סיימו לחשב
+//					isDone = true;
+//			}
+//			printFinalAns12(a);
+//		}
 
 		return finalAns;//Result type
 	}
-	private void printFinalAns12(ArrayList<Node> a) {
-		for (int i = 0; i < To; i++) {
-			System.out.println("Expr. type (1.2),  l = m = " + To + " == "
-					+ (a.get(i).res.res));
-		}
-		
-	}
+//	private void printFinalAns12(ArrayList<Node> a) {
+//		for (int i = 0; i < To; i++) {
+//			System.out.println("Expr. type (1.2),  l = m = " + To + " == "
+//					+ (a.get(i).res.res));
+//		}
+//		
+//	}
 
 
-	private void printFinalAns() {
-		if(calcType==1.1){
-			System.out.println("Expr. type (1.1),  n = " + To + " == "
-					+ (finalAns.res));
-		}
+//	private void printFinalAns() {
+//		if(calcType==1.1){
+//			System.out.println("Expr. type (1.1),  n = " + To + " == "
+//					+ (finalAns.res));
+//		}
 //		else{
 //			if(calcType==1.2){
 //				System.out.println("Expr. type (1.2),  l = m = " + To + " == "
 //						+ (finalAns.res));
 //			}
 //		}
-	}
+//	}
 
 	/**
 	 * @param a מקבלת מערך של נודים ועל סמך התוצאות שבנודים 

@@ -27,6 +27,7 @@ public class Feeder extends Thread {
 
 			int temp = pm.numOfTask();
 			if (temp < maxTask) {
+//				System.out.println("pm task added");
 				pm.addTask(arr.get(index));
 				index++;
 			}
