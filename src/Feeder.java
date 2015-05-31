@@ -27,22 +27,18 @@ public class Feeder extends Thread {
 
 			int temp = pm.numOfTask();
 			if (temp < maxTask) {
-//				System.out.println("pm task added");
 				pm.addTask(arr.get(index));
 				index++;
 			}
-			
 			//לצורך בדיקות ... אפשר למחוק בסוף
 			// System.out.println("feeder ensd");
-
 			/*try {
 				sleep(5000);
 			} catch (InterruptedException e) { // TODO Auto-generated
 				e.printStackTrace();
 			}*/
 		}
-		// System.out.println("Feeder ENDs"+index);
-		
+		// System.out.println("Feeder ENDs"+index);	
 	}
 }
 

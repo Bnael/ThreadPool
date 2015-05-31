@@ -16,14 +16,6 @@ public class poolmaneger {
 			pt[i].start();
 		}
 	}
-
-	/*
-	// אני לא חושב שיש שימוש בפונקצייה הזאת
-	//no use - can delete
-	public synchronized boolean isQEmpty() {
-		return q.isEmpty();
-	}
-	 */
 	
 	// בשביל הטרדים, מכאן הם מושים משימות שנמצאות בתור צריך לשנות את זה לסמפור..
 	// שלא יקחו את אותה המשימה בוז

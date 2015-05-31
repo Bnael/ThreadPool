@@ -1,12 +1,10 @@
 
 public class Result {
 	
-
 double res;
 	public Result(){
 		res = 1;
 	}
-	
 	
 	public void setRes(double d){
 		this.res = d;
@@ -16,6 +14,4 @@ double res;
 	public String toString() {
 		return "Result [res=" + res + "]";
 	}
-
-
 }
