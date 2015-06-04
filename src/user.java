@@ -8,30 +8,80 @@ public class user {
 	Result[] res12;
 
 	public static void main(String[] args) {
-		int k = 3;
+		
+		System.out.println("test 1");
+		user u1 = new user();
+		ArrayList<Integer> nk2 = new ArrayList<Integer>();
+		ArrayList<Integer> lr2 = new ArrayList<Integer>();
+		ArrayList<Integer> mr2 = new ArrayList<Integer>();
+		nk2.add(1);
+		lr2.add(1);
+		mr2.add(2);
+		
+		u1.solution(1, 1,nk2, lr2, mr2,1, 2, 2, 20);
+		
+		System.out.println("test 2");
+		
+		int k = 5;
 		int r = 3;
 		ArrayList<Integer> nk = new ArrayList<Integer>();
 		ArrayList<Integer> lr = new ArrayList<Integer>();
 		ArrayList<Integer> mr = new ArrayList<Integer>();
 		int t = 5;
-		int s = 2;
+		int s = 3;
 		int m = 3;
-		int p = 10;
+		int p = 5;
 
-		nk.add(5);
-		nk.add(20);
-		nk.add(50);
+		nk.add(1);
+		nk.add(10);
+		nk.add(2);
+		nk.add(15);
+		nk.add(8);
 
-		lr.add(2);
-		lr.add(2);
+		lr.add(5);
+		lr.add(5);
+		lr.add(5);
+		lr.add(6);
 		lr.add(2);
 
-		mr.add(13);
-		mr.add(17);
-		mr.add(29);
+		mr.add(1);
+		mr.add(1);
+		mr.add(1);
+		mr.add(2);
+		mr.add(5);
 
 		user u = new user();
 		u.solution(k, r, nk, lr, mr, t, s, m, p);
+		
+		
+		System.out.println("test 3");
+		int k3 = 20;
+		int r3 = 30;
+		ArrayList<Integer> nk3 = new ArrayList<Integer>();
+		ArrayList<Integer> lr3 = new ArrayList<Integer>();
+		ArrayList<Integer> mr3 = new ArrayList<Integer>();
+		int t3 = 500;
+		int s3 = 3;
+		int m3 = 3;
+		int p3 = 5;
+
+//		nk3.add(1);
+		for (int i = 1; i <= 20; i++) {
+			nk3.add(i);
+		}
+		
+		for (int i = 20; i <= 50; i++) {
+			lr3.add(i);
+		}
+		
+		for (int i = 10; i <=40; i++) {
+			mr3.add(i);
+		}
+		
+
+		user u3 = new user();
+		u3.solution(k3, r3, nk3, lr3, mr3, t3, s3, m3, p3);
+		
 
 	}
 
@@ -85,6 +135,8 @@ public class user {
 			track13[i].start();
 		}
 		//Summaries 1.2 and 1.3
+//		System.out.println("1.2 res "+track12[0].finalAns);
+//		System.out.println("1.3 res "+track13[0].finalAns);
 		SecondTrack t14 = new SecondTrack(pm, t, s,track12,track13);
 		res12 = t14.start();	
 	}

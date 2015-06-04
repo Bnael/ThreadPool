@@ -4,7 +4,7 @@ public class Task implements Callable<Double> {
 
 	final int MULTIPLY = 1;
 	final int SUMMARIZE = 2;
-	Queue<Double> numq;
+	private Queue<Double> numq;
 	int calcType;
 
 	/**

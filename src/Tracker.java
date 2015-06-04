@@ -68,7 +68,6 @@ public class Tracker implements Callable<Result> {
 
 	@Override
 	public Result call() throws Exception {
-
 			while (!calcFinished) {//ממשיך כל עוד לא הגענו לתוצאה יחידה 
 				this.feeder = new Feeder(this.pm, this.t);
 				ArrayList<Node> a = this.arr.get(this.arr.size() - 1);//לוקח את המערך האחרון 

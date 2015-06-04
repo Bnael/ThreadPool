@@ -1,8 +1,8 @@
 import java.util.concurrent.Semaphore;
 
 public class poolmaneger {
-	poolthread[] pt;// הטרדים הפועלים בגודל T
-	Queue<Node> q;// המשימות שנכנסות מהפידר
+	private poolthread[] pt;// הטרדים הפועלים בגודל T
+	private Queue<Node> q;// המשימות שנכנסות מהפידר
 	boolean flag = true; // when all the work is finished it's turn to false and all the threads kill themselves
 	Semaphore semGet ;
 	
